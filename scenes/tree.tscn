@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/tree.gd" type="Script" id=1]
+[ext_resource path="res://sprites/tree01.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.01904, 7.48589 )
+
+[node name="tree" type="StaticBody2D" groups=[
+"tree",
+]]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z" ]
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+position = Vector2( -0.0460701, 6.72619 )
+shape = SubResource( 1 )
+
+

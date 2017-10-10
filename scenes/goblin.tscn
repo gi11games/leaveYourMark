@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/goblin.gd" type="Script" id=1]
+[ext_resource path="res://sprites/enemy/goblin01.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.77244, 8.88342 )
+
+[node name="goblin" type="KinematicBody2D" groups=[
+"enemy",
+]]
+
+position = Vector2( 6.73586, 8.05876 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+
+[node name="attack_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+
+
